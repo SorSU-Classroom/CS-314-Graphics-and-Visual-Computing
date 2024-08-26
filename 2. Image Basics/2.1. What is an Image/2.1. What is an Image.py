@@ -124,7 +124,7 @@ imageOpenCV = cv2.imread('../../assets/images/parrot.jpg')
 imageNumPy = np.array(imageOpenCV)
 
 # Convert color from BGR to RGB
-# imageNumPy = cv2.cvtColor(imageNumPy, cv2.COLOR_BGR2RGB)
+imageNumPy = cv2.cvtColor(imageNumPy, cv2.COLOR_BGR2RGB)
 
 # Displaying the image using NumPy
 print("Displaying the image using NumPy")

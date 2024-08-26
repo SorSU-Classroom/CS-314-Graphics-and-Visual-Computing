@@ -118,19 +118,19 @@ plt.figure('RGB Color Model')
 
 # Display the Red Channel
 plt.subplot(3, 3, 1)
-plt.imshow(channel_r)
+plt.imshow(channel_r, cmap='Reds')
 plt.title('Red Channel')
 plt.axis('off')
 
 # Display the Green Channel
 plt.subplot(3, 3, 2)
-plt.imshow(channel_g)
+plt.imshow(channel_g, cmap='Greens')
 plt.title('Green Channel')
 plt.axis('off')
 
 # Display the Blue Channel
 plt.subplot(3, 3, 3)
-plt.imshow(channel_b)
+plt.imshow(channel_b, cmap='Blues')
 plt.title('Blue Channel')
 plt.axis('off')
 
@@ -214,34 +214,19 @@ channel_h, channel_s, channel_v = cv2.split(hsv_image)
 print("Displaying the HSV Color Model and its channels")
 plt.figure('HSV Color Model')
 
-plt.subplot(2, 3, 1)
-plt.imshow(channel_h, cmap='hsv')
+plt.subplot(1, 3, 1)
+plt.imshow(channel_h, cmap='gray')
 plt.title('Hue Channel')
 plt.axis('off')
 
-plt.subplot(2, 3, 2)
+plt.subplot(1, 3, 2)
 plt.imshow(channel_s, cmap='gray')
 plt.title('Saturation Channel')
 plt.axis('off')
 
-plt.subplot(2, 3, 3)
+plt.subplot(1, 3, 3)
 plt.imshow(channel_v, cmap='gray')
 plt.title('Value Channel')
-plt.axis('off')
-
-plt.subplot(2, 3, 4)
-plt.imshow(channel_h, cmap='gray')
-plt.title('Hue Channel (BW)')
-plt.axis('off')
-
-plt.subplot(2, 3, 5)
-plt.imshow(channel_s, cmap='gray')
-plt.title('Saturation Channel (BW)')
-plt.axis('off')
-
-plt.subplot(2, 3, 6)
-plt.imshow(channel_v, cmap='gray')
-plt.title('Value Channel (BW)')
 plt.axis('off')
 
 plt.show()
@@ -563,22 +548,36 @@ yuv_image = cv2.cvtColor(original_image, cv2.COLOR_RGB2YUV)
 # Divide the YUV image into its three color channels
 channel_y, channel_u, channel_v = cv2.split(yuv_image)
 
+# Create LUTs for the U and V channels
+lut_u = np.array([[[i,255-i,0] for i in range(256)]],dtype=np.uint8)
+lut_v = np.array([[[0,255-i,i] for i in range(256)]],dtype=np.uint8)
+
+# Convert the U and V channels to RGB color space using the LUTs
+y_rgb = cv2.cvtColor(channel_y, cv2.COLOR_GRAY2RGB)
+u_rgb = cv2.cvtColor(channel_u, cv2.COLOR_GRAY2RGB)
+v_rgb = cv2.cvtColor(channel_v, cv2.COLOR_GRAY2RGB)
+
+# Apply the LUTs to the U and V channels
+u_mapped = cv2.LUT(u_rgb, lut_u)
+v_mapped = cv2.LUT(v_rgb, lut_v)
+
 # Displaying the three color channels
 print("Displaying the YUV Color Model and its channels")
 plt.figure('YUV Color Model')
 
+# Display the Y Channel
 plt.subplot(2, 3, 1)
-plt.imshow(channel_y)
+plt.imshow(y_rgb)
 plt.title('Y Channel')
 plt.axis('off')
 
 plt.subplot(2, 3, 2)
-plt.imshow(channel_u)
+plt.imshow(u_mapped)
 plt.title('U Channel')
 plt.axis('off')
 
 plt.subplot(2, 3, 3)
-plt.imshow(channel_v)
+plt.imshow(v_mapped)
 plt.title('V Channel')
 plt.axis('off')
 
@@ -634,34 +633,19 @@ channel_l, channel_a, channel_b = cv2.split(lab_image)
 print("Displaying the CIE L*a*b* Color Model and its channels")
 plt.figure('CIE L*a*b* Color Model')
 
-plt.subplot(2, 3, 1)
-plt.imshow(channel_l)
+plt.subplot(1, 3, 1)
+plt.imshow(channel_l, cmap='gray')
 plt.title('L* Channel')
 plt.axis('off')
 
-plt.subplot(2, 3, 2)
-plt.imshow(channel_a)
+plt.subplot(1, 3, 2)
+plt.imshow(channel_a, cmap='gray')
 plt.title('a* Channel')
 plt.axis('off')
 
-plt.subplot(2, 3, 3)
-plt.imshow(channel_b)
-plt.title('b* Channel')
-plt.axis('off')
-
-plt.subplot(2, 3, 4)
-plt.imshow(channel_l, cmap='gray')
-plt.title('L* Channel (BW)')
-plt.axis('off')
-
-plt.subplot(2, 3, 5)
-plt.imshow(channel_a, cmap='gray')
-plt.title('a* Channel (BW)')
-plt.axis('off')
-
-plt.subplot(2, 3, 6)
+plt.subplot(1, 3, 3)
 plt.imshow(channel_b, cmap='gray')
-plt.title('b* Channel (BW)')
+plt.title('b* Channel')
 plt.axis('off')
 
 plt.show()
