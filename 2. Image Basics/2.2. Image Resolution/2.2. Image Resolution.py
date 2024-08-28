@@ -4,10 +4,9 @@
 # *College of Information and Communications Technology, Sorsogon State University, Philippines*
 
 # %% [markdown]
-# # Image Resolution
+# # Introduction
 # 
 # Image Resolution is the number of pixels in an image. It is usually expressed as width x height. For example, an image with resolution `1920x1080` has `1920` pixels in width and `1080` pixels in height.
-
 
 # %% [markdown]
 # # Initial Setup
@@ -30,17 +29,17 @@ original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
 gray_image = cv2.cvtColor(grayscale_image, cv2.COLOR_BGR2RGB)
 
 # Displaying the image
-print("Displaying the Original Image and the Grayscale Image")
+print("Original Image and Grayscale Image")
 plt.figure("Original Image and Grayscale Image")
 
 plt.subplot(1, 2, 1)
 plt.imshow(original_image)
-plt.title("Original Image")
+plt.title(f'(a) Original Image', y=-0.15)
 plt.axis('off')
 
 plt.subplot(1, 2, 2)
 plt.imshow(gray_image)
-plt.title("Grayscale Image")
+plt.title(f'(b) Grayscale Image', y=-0.15)
 plt.axis('off')
 
 plt.show()
@@ -86,38 +85,38 @@ g_img_1_bit = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 g_img_1_bit = cv2.normalize(g_img_1_bit, None, 0, 1, cv2.NORM_MINMAX)
 
 # Displaying the image
-print("Displaying the Image in Different Intensity Resolutions")
+print("Image in Different Intensity Resolutions")
 plt.figure("Image in Different Intensity Resolutions")
 
 plt.subplot(2, 3, 1)
 plt.imshow(g_img_8_bit, cmap='gray')
-plt.title("8-bit Image")
+plt.title(f'8-bit Image', y=-0.225)
 plt.axis('off')
 
 plt.subplot(2, 3, 2)
 plt.imshow(g_img_6_bit, cmap='gray')
-plt.title("6-bit Image")
+plt.title(f'6-bit Image', y=-0.225)
 plt.axis('off')
 
 plt.subplot(2, 3, 3)
 plt.imshow(g_img_4_bit, cmap='gray')
-plt.title("4-bit Image")
+plt.title(f'4-bit Image', y=-0.225)
 plt.axis('off')
 
 plt.subplot(2, 3, 4)
 plt.imshow(g_img_2_bit, cmap='gray')
-plt.title("2-bit Image")
+plt.title(f'2-bit Image', y=-0.225)
 plt.axis('off')
 
 plt.subplot(2, 3, 5)
 plt.imshow(g_img_1_bit, cmap='gray')
-plt.title("1-bit Image")
+plt.title(f'1-bit Image', y=-0.225)
 plt.axis('off')
 
 plt.show()
 
 # %% [markdown]
-# The above code reduces the intensity resolution of the grayscale image to `64`, `16`, `4`, `2`, and `1` gray levels. The intensity resolution of the grayscale image is reduced by normalizing the pixel values to the desired range.
+# The above code reduces the intensity resolution of the grayscale image to `64`, `16`, `4`, and `2` gray levels. The intensity resolution of the grayscale image is reduced by normalizing the pixel values to the desired range.
 # To reduce the intensity resolution of the grayscale image, the `cv2.normalize()` function is used.
 # 
 # **Important codes to remember:**
@@ -153,37 +152,37 @@ downsampled_image_8 = cv2.resize(grayscale_image, (8, 8))
 
 
 # Displaying the image
-print("Displaying the Downsampling Image")
+print("Downsampling Image")
 plt.figure("Downsampling Image")
 
 plt.subplot(2, 3, 1)
 plt.imshow(grayscale_image, cmap='gray')
-plt.title(f"Original ({grayscale_image.shape[0]}x{grayscale_image.shape[1]})")
+plt.title(f"(a) {grayscale_image.shape[0]}x{grayscale_image.shape[1]}", y=-0.2)
 plt.axis('off')
 
 plt.subplot(2, 3, 2)
 plt.imshow(downsampled_image_512, cmap='gray')
-plt.title(f"Image (512x512)")
+plt.title(f"(b) 512x512", y=-0.2)
 plt.axis('off')
 
 plt.subplot(2, 3, 3)
 plt.imshow(downsampled_image_256, cmap='gray')
-plt.title(f"Image (256x256)")
+plt.title(f"(c) 256x256", y=-0.2)
 plt.axis('off')
 
 plt.subplot(2, 3, 4)
 plt.imshow(downsampled_image_64, cmap='gray')
-plt.title(f"Image (64x64)")
+plt.title(f"(d) 64x64", y=-0.2)
 plt.axis('off')
 
 plt.subplot(2, 3, 5)
 plt.imshow(downsampled_image_16, cmap='gray')
-plt.title(f"Image (16x16)")
+plt.title(f"(e) 16x16", y=-0.2)
 plt.axis('off')
 
 plt.subplot(2, 3, 6)
 plt.imshow(downsampled_image_8, cmap='gray')
-plt.title(f"Image (8x8)")
+plt.title(f"(f) 8x8", y=-0.2)
 plt.axis('off')
 
 plt.show()

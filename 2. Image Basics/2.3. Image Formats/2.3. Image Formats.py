@@ -1,9 +1,14 @@
 # %% [markdown]
-# # Image Formats
+# **Jarrian Vince G. Gojar**\
+# Instructor I\
+# *College of Information and Communications Technology, Sorsogon State University, Philippines*
+
+# %% [markdown]
+# # Introduction
 # 
-# Storing an image digitally can be a rather simple concept in which each pixel is stored in three bytes (one each for color channel). However, there are many different ways to store images digitally, and the format in which an image is stored can have a significant impact on the image's quality and file size. For example, the JPEG format is a lossy format, meaning that some image quality is lost when the image is compressed and saved, while the PNG format is a lossless format, meaning that no image quality is lost when the image is saved.
+# Storing an image digitally can be a very simple concept where in which each pixel is stored in three bytes (one each for color channel). However, there are different ways to store images digitally, and the format of the image when stored can affect the image's quality and file size. For example, the `JPEG` format is a lossy format which means that some image quality is lost when the image is compressed and saved, while the `PNG` format is a lossless format which means that no image quality is lost when the image is saved.
 # 
-# A common smartphone can capture an image with a resolution of 4160x2340 pixels, which is over 9 million pixels. Furthermore, this image is a color image, meaning that each pixel is represented by three bytes (one each for the red, green, and blue color channels). This means that a single image can require over 29 million bytes (or 29 megabytes) of storage space. If images were stored in this fashion, they would take up a significant amount of storage space, and it would be difficult to share them over the internet. Therefore, images are typically compressed before they are stored or shared. Greater compression can lead to a smaller file size, but it can also lead to a loss of image quality.
+# A common smartphone can capture an image with a resolution of `4160x2340` pixels, which is over 9 million pixels. Furthermore, this image is a color image, signifying that each pixel is represented by three bytes (one each for the red, green, and blue color channels). This means that a single image can require over 29 million bytes (or 29 megabytes) of storage space. If images were stored in this like this, they would take up a huge amount of storage space, and it would be difficult to share them over the internet. Therefore, images are typically compressed before they are stored or shared. Greater compression can lead to a smaller file size, but it can also lead to a loss of image quality.
 # 
 # Common Types of Image Formats:
 # 
@@ -38,7 +43,7 @@ original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
 plt.figure("Original Image")
 plt.imshow(original_image)
 plt.axis('off')
-plt.title('Original Image')
+plt.title(f'(a) Original Image', y=-0.1)
 plt.show()
 
 # %% [markdown]
@@ -53,11 +58,7 @@ plt.show()
 # %% [markdown]
 # # JPEG (Joint Photographic Experts Group)
 # 
-# `JPEG` is a lossy compression algorithm that is widely used for photographic images. The `JPEG` standard defines how an image is compressed into a stream of bytes and how the image is decompressed back into an image. The `JPEG` standard is widely used for storing and transmitting images on the internet.
-# 
-# This format sacrifices some image quality to achieve high compression ratios. Since most photographs do not contain exceedingly sharp edges, the loss of quality is usually not noticeable.
-# 
-# The `JPEG` compression converts the image into the `YCbCr` color space and then applies the Discrete Cosine Transform (`DCT`) to the image. The `DCT` is a mathematical technique that converts an image into a set of frequencies. The `DCT` is similar to the Fourier Transform, but it is more efficient for images.
+# `JPEG` is a lossy compression algorithm that is commonly used for photographic images. The `JPEG` standard defines how an image is compressed into a stream of bytes and how the image is decompressed back into an image. The `JPEG` standard is widely used for storing and transmitting images on the internet. This format sacrifices some image quality to achieve high compression ratios. Since most photographs do not contain exceedingly sharp edges, the loss of quality is usually not noticeable. The `JPEG` compression converts the image into the `YCbCr` color space and then applies the Discrete Cosine Transform (`DCT`) to the image. The `DCT` is a mathematical technique that converts an image into a set of frequencies. The `DCT` is similar to the Fourier Transform, but it is more efficient for images.
 # 
 # **Read More:**
 # 
@@ -77,16 +78,16 @@ jpeg_image = cv2.cvtColor(jpeg_image, cv2.COLOR_BGR2RGB)
 
 # Compare the original(PNG) and JPEG images
 print('PNG vs JPEG Image')
-plt.figure("Original Image vs JPEG Image")
+plt.figure("PNG vs JPEG Image")
 
 plt.subplot(1, 2, 1)
 plt.imshow(original_image)
-plt.title('Original Image (PNG)')
+plt.title(f'(a) Original Image (PNG)', y=-0.15)
 plt.axis('off')
 
 plt.subplot(1, 2, 2)
 plt.imshow(jpeg_image)
-plt.title('JPEG Image')
+plt.title(f'(b) JPEG Image', y=-0.15)
 plt.axis('off')
 
 plt.show()
@@ -107,11 +108,7 @@ print("Size (MB):", f"{os.path.getsize(jpeg_image_path) / (1024 * 1024):.2f} MB"
 # %% [markdown]
 # # GIF (Graphics Interchange Format)
 # 
-# `GIF` is a bitmap image format that was developed by a team at the online services provider `CompuServe` led by American computer scientist `Steve Wilhite` on `June 15, 1987`. It has since come into widespread usage on the World Wide Web due to its wide support and portability.
-# 
-# `GIF` uses a palette to store color information, and it supports animations. A look-up table of 256 colors (RGB) is used to represent the image. `GIF` images are compressed using the `Lempel-Ziv-Welch (LZW)` lossless data compression technique to reduce the file size without losing the image quality.
-# 
-# `GIF` has far too few colors to be a good format for photographs, therefore a `GIF` compression will estimate the color palette of the image and reduce the number of colors in the image to 256 or less. Although `GIF` is not suitable for photographs, it is an excellent format for images with large areas of solid color, like logos, icons, and simple drawings.
+# `GIF` is a bitmap image format that was developed by a team at the online services provider `CompuServe` led by American computer scientist `Steve Wilhite` on `June 15, 1987`. Since then, it was widely used on the World Wide Web due to its wide support and portability. `GIF` uses a palette to store color information, and it supports animations. A look-up table of 256 colors (RGB) is used to represent the image. `GIF` images are compressed using the `Lempel-Ziv-Welch (LZW)` lossless data compression technique to reduce the file size without losing the image quality. `GIF` has far too few colors to be a good format for photographs, therefore a `GIF` compression will estimate the color palette of the image and reduce the number of colors in the image to 256 or less. Although `GIF` is not suitable for photographs, it is an excellent format for images with large areas of solid color, like logos, icons, and simple drawings.
 # 
 # **Read More:**
 # 
@@ -133,16 +130,16 @@ gif_image = PIL.Image.open(gif_image_path)
 # Compare the original(PNG) and GIF images
 print('PNG vs GIF Image')
 
-plt.figure("Original Image vs GIF Image")
+plt.figure("PNG vs GIF Image")
 
 plt.subplot(1, 2, 1)
 plt.imshow(original_image)
-plt.title('Original Image (PNG)')
+plt.title(f'(a) Original Image (PNG)', y=-0.15)
 plt.axis('off')
 
 plt.subplot(1, 2, 2)
 plt.imshow(gif_image)
-plt.title('GIF Image')
+plt.title(f'(b) GIF Image', y=-0.15)
 plt.axis('off')
 
 plt.show()
@@ -175,16 +172,13 @@ print("Size (MB):", f"{os.path.getsize(gif_image_path) / (1024 * 1024):.2f} MB")
 # `TIFF` format can store data with or without compression. If the data is not compressed, then `TIFF` files can be larger than bitmap files. Scanner software often saves scanned images as `TIFF` files which allows the user to view the raw image data in the file. This is actually useful to companies which will modify the image by inserting new data fields into the image file. Standard `TIFF` files will not be able to display the new data fields and may not be able to display the image at all.
 # 
 # **Read More:**
+# 
 # - [`TIFF` (Tagged Image File Format)](https://en.wikipedia.org/wiki/TIFF)
 
 # %% [markdown]
 # # PNG (Portable Network Graphics)
 # 
-# The `PNG` format was designed for transmitting images over the internet, thus gaining its name "Portable Network Graphics". It is a lossless compression which means that it creates files that are larger than `JPEGs`, but it does not lose any information in the process. `PNGs` are ideal for images that require transparency and for images that need to be edited and saved multiple times.
-# 
-# Unlike `JPEGs`, `PNGs` support transparency. This means that you can have an image with a transparent background that allows you to place the image on top of another image or background. This is useful for logos and other images that require a transparent background.
-# 
-# PNG supports RGBA color space, which means that it can store an additional channel for transparency. This channel is called the Alpha channel and it stores information about how opaque each pixel is. This allows for images to have a transparent background.
+# The `PNG` format was designed for transmitting images over the internet, thus gaining its name "Portable Network Graphics". It is a lossless compression which means that it creates files that are larger than `JPEGs`, but it does not lose any information in the process. `PNGs` are ideal for images that require transparency and for images that need to be edited and saved multiple times. Unlike `JPEGs`, `PNGs` support transparency. This means that you can have an image with a transparent background that allows you to place the image on top of another image or background. This is useful for logos and other images that require a transparent background. PNG supports RGBA color space, which means that it can store an additional channel for transparency. This channel is called the Alpha channel and it stores information about how opaque each pixel is. This allows for images to have a transparent background.
 # 
 # **Read More:**
 # 
@@ -201,31 +195,32 @@ transparent_image = PIL.Image.open(transparent_image_path)
 r, g, b, a = transparent_image.split()
 
 # Display the image
+print('Dividing the image into its Four Color Channels')
 plt.figure("RGBA Channels")
 
 plt.subplot(2, 3, 1)
 plt.imshow(transparent_image)
-plt.title('Original Image')
+plt.title(f'(a) Original Image', y=-0.25)
 plt.axis('off')
 
 plt.subplot(2, 3, 2)
 plt.imshow(r, cmap='Reds')
-plt.title('Red Channel')
+plt.title(f'(b) Red Channel', y=-0.25)
 plt.axis('off')
 
 plt.subplot(2, 3, 3)
 plt.imshow(g, cmap='Greens')
-plt.title('Green Channel')
+plt.title(f'(c) Green Channel', y=-0.25)
 plt.axis('off')
 
 plt.subplot(2, 3, 5)
 plt.imshow(b, cmap='Blues')
-plt.title('Blue Channel')
+plt.title(f'(d) Blue Channel', y=-0.25)
 plt.axis('off')
 
 plt.subplot(2, 3, 6)
 plt.imshow(a, cmap='Greys')
-plt.title('Alpha Channel')
+plt.title(f'(e) Alpha Channel', y=-0.25)
 plt.axis('off')
 
 plt.show()
