@@ -722,3 +722,12 @@ plt.show()
 # 
 
 
+# %% [markdown]
+# Exercise 2
+# 1. Read an image using OpenCV and display it using Matplotlib.
+# 2. Using the image from no. 1, convert the image from BGR to RGB color space then display it using Matplotlib.
+# 3. Using the image from no. 2, convert the image from RGB to HSV color space then display the three color channels using Matplotlib.
+# 4. Using the image from no. 3, change the `red` color in the image to `orange` using the HSV color space then display the output image using Matplotlib.
+# 5. Using the image from no. 4, change the `green` color in the image to `yellow` using the HSV color space then display the output image using Matplotlib.
+# 6. Using the image from no. 5, change the `blue` color in the image to `purple` using the HSV color space then display the output image using Matplotlib.
+# 7. Save the output images from no. 1, 2, 3, 4, 5, and 6.
